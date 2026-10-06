@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLanguage } from '../context/LanguageContext'
 
-function BarberCard({ barber }) {
+function BarberCard({ barber, onSelect }) {
     const { t } = useLanguage();
 
     return (
@@ -32,7 +32,7 @@ function BarberCard({ barber }) {
                   hover:bg-slate-600 transition'>{t('callNow')}</a>
                 <button className='flex-1 bg-indigo-600 text-white 
                 py-2 rounded-xl font-medium
-                 hover:bg-indigo-500 transition'>{t('bookNow')}</button>
+                 hover:bg-indigo-500 transition' onClick={onSelect}>{t('bookNow')}</button>
             </footer>
         </div >
     )
