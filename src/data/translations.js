@@ -5,7 +5,7 @@ export const translations = {
     roleAdmin: "Barber / Admin",
     selectBarber: "Select Barber",
     experience: "Experience",
-    age: "yrs old",
+    age: "years old",
     languages: "Languages",
     callNow: "Call Now",
     bookNow: "Book Appointment",

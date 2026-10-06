@@ -1,9 +1,9 @@
 export const initialBarbers = [
   {
     id: "b1",
-    name: "Asrorjan",
+    name: "Linda",
     age: 26,
-    experience: "4 years",
+    experience: "4 ",
     avatar:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
     phone: "+998 90 123 45 67",
@@ -14,9 +14,9 @@ export const initialBarbers = [
   },
   {
     id: "b2",
-    name: "Alex",
+    name: "Asrorjan",
     age: 29,
-    experience: "6 years",
+    experience: "6",
     avatar:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
     phone: "+998 91 987 65 43",

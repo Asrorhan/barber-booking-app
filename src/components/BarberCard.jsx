@@ -16,7 +16,7 @@ function BarberCard({ barber }) {
                 <span className='text-yellow-400 font-semibold flex items-center gap-1'>{barber.rating}</span>
             </header>
             <div className='my-4 flex flex-col gap-2 text-slate-300 text-sm'>
-                <p>{barber.age} {t('yearsOld')}</p>
+                <p>{barber.age} {t('age')}</p>
                 <p>{barber.experience} {t('experience')}</p>
                 <div className='flex flex-wrap gap-1 mt-2'>  {barber.languages.map((language) => {
                     return <span key={language}
@@ -29,10 +29,10 @@ function BarberCard({ barber }) {
             <footer className='flex gap-3 mt-4 pt-3 border-t border-slate-700'>
                 <a href={`tel:${barber.phone}`} className='flex-1 text-center
                  bg-slate-700 text-white py-2 rounded-xl
-                  hover:bg-slate-600 transition'>Phone Number</a>
+                  hover:bg-slate-600 transition'>{t('callNow')}</a>
                 <button className='flex-1 bg-indigo-600 text-white 
                 py-2 rounded-xl font-medium
-                 hover:bg-indigo-500 transition'>Book Now</button>
+                 hover:bg-indigo-500 transition'>{t('bookNow')}</button>
             </footer>
         </div >
     )
