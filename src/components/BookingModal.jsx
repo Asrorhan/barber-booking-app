@@ -7,7 +7,7 @@ function BookingModal({ barber, onClose }) {
     const { t } = useLanguage();
     const [selectedServices, setSelectedServices] = useState([]);
     const [selectedTime, setSelectedTime] = useState(null);
-    const { addBooking } = useApp();
+    const { bookings, addBooking } = useApp();
 
     const timeSlots = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00"];
 
@@ -27,9 +27,20 @@ function BookingModal({ barber, onClose }) {
         e.preventDefault()
         if (selectedServices.length === 0 || !selectedTime) return;
 
-        addBooking({ barberId: barber.id, barberName: barber.name, service: selectedServices, time: selectedTime, totalPrice: totalPrice })
+        addBooking({
+            barberId: barber.id,
+            barberName: barber.name,
+            service: selectedServices,
+            time: selectedTime,
+            totalPrice: totalPrice,
+            customerName: "Asrorjon",
+        })
         onClose();
     };
+
+    const bookedTimes = bookings
+        .filter((b) => b.barberId === barber.id)
+        .map((b) => b.time);
 
     return (
         <div className='fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50 backdrop-blur-sm'>
@@ -81,13 +92,16 @@ function BookingModal({ barber, onClose }) {
                     <div className='grid grid-cols-4 gap-2'>
                         {timeSlots.map((time) => {
                             const isSelected = selectedTime === time;
+                            const isBooked = bookedTimes.includes(time);
                             return (
                                 <button
                                     key={time}
                                     onClick={() => setSelectedTime(time)}
-                                    className={`py-2 text-xs rounded-lg font-medium border transition ${isSelected
-                                        ? 'bg-indigo-600 text-white border-indigo-500'
-                                        : 'bg-slate-700/50 text-slate-300 border-slate-600 hover:border-slate-500'
+                                    className={`py-2 text-xs rounded-lg font-medium border transition ${isBooked
+                                        ? 'bg-slate-800 text-slate-500 border-slate-700 cursor-not-allowed opacity-40 line-through'
+                                        : isSelected
+                                            ? 'bg-indigo-600 text-white border-indigo-500'
+                                            : 'bg-slate-700/50 text-slate-300 border-slate-600 hover:border-slate-500'
                                         }`}
                                 >
                                     {time}
