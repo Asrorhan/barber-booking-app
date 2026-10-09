@@ -22,6 +22,10 @@ export const translations = {
     bookingSuccess: "Booking confirmed!",
     timeLabel: "Time",
     totalLabel: "Total",
+    noBookings: "You don't have bookings yet",
+    cancelBooking: "Cancel Booking",
+    barbers: "Barbers",
+    myBookings: "My Bookings",
   },
   RU: {
     title: "Запись в Барбершоп",
@@ -46,6 +50,10 @@ export const translations = {
     bookingSuccess: "Запись подтверждена!",
     timeLabel: "Время",
     totalLabel: "Итого",
+    noBookings: "У вас пока нет записей",
+    cancelBooking: "Отменить запись",
+    barbers: "Мастера",
+    myBookings: "Мои записи",
   },
   UZ: {
     title: "Barbershop Bron Tizimi",
@@ -70,5 +78,9 @@ export const translations = {
     bookingSuccess: "Bron qilindi!",
     timeLabel: "Vaqt",
     totalLabel: "Jami",
+    noBookings: "Sizda hali bronlar yo'q",
+    cancelBooking: "Bronni bekor qilish",
+    barbers: "Sartaroshlar",
+    myBookings: "Mening bronlarim",
   },
 };

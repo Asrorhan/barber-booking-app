@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { servicesList } from '../data/initialData'
+import { useApp } from '../context/AppContext';
 
 function BookingModal({ barber, onClose }) {
     const { t } = useLanguage();
     const [selectedServices, setSelectedServices] = useState([]);
     const [selectedTime, setSelectedTime] = useState(null);
+    const { addBooking } = useApp();
 
     const timeSlots = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00"];
 
@@ -21,10 +23,11 @@ function BookingModal({ barber, onClose }) {
         .filter(s => selectedServices.includes(s.id))
         .reduce((sum, s) => sum + parseInt(s.price.replace('$', '')), 0);
 
-    const handleConfirm = () => {
+    const handleConfirm = (e) => {
+        e.preventDefault()
         if (selectedServices.length === 0 || !selectedTime) return;
 
-        alert(`${barber.name} - ${t('bookingSuccess')}\n${t('timeLabel')}: ${selectedTime}\n${t('totalLabel')}: $${totalPrice}`);
+        addBooking({ barberId: barber.id, barberName: barber.name, service: selectedServices, time: selectedTime, totalPrice: totalPrice })
         onClose();
     };
 
