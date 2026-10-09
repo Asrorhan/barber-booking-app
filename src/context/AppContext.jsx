@@ -14,7 +14,9 @@ export const AppProvider = ({ children }) => {
         return saved ? JSON.parse(saved) : [];
     });
 
-    const [role, setRole] = useState('customer');
+    const [role, setRole] = useState(() => {
+        return localStorage.getItem('role') || 'customer';
+    });
 
     useEffect(() => {
         localStorage.setItem('barbers', JSON.stringify(barbers));
@@ -23,6 +25,9 @@ export const AppProvider = ({ children }) => {
     useEffect(() => {
         localStorage.setItem('bookings', JSON.stringify(bookings));
     }, [bookings]);
+    useEffect(() => {
+        localStorage.setItem('role', role)
+    }, [role]);
 
     const addBarber = (newBarber) => {
         setBarbers((prev) => [...prev, { ...newBarber, id: `b_${Date.now()}` }]);

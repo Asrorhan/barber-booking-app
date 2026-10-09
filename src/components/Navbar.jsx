@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
     const { lang, setLang, t } = useLanguage();
-    const { role, setRole } = useApp();
+    const { role, setRole, toggleRole } = useApp();
 
     return (
         <nav className="flex justify-between items-center bg-slate-900 text-white p-4">
@@ -49,9 +49,14 @@ function Navbar() {
                     </button>
                 </div>
 
-                <button onClick={() => setRole(role === "customer" ? "admin" : "customer")}
-                    className="bg-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-700">
-                    {role === "customer" ? t('roleCustomer') : t('roleAdmin')}
+                <button
+                    onClick={() => setRole(role === "customer" ? "admin" : "customer")}
+                    className={`px-4 py-2 rounded-lg font-medium transition cursor-pointer ${role === "admin"
+                            ? "bg-purple-600 hover:bg-purple-700 text-white"
+                            : "bg-indigo-600 hover:bg-indigo-700 text-white"
+                        }`}
+                >
+                    {role === "admin" ? "Admin Mode" : "Customer Mode"}
                 </button>
             </div>
         </nav >
