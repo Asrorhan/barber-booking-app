@@ -27,6 +27,8 @@ function BookingModal({ barber, onClose }) {
     const handleConfirm = (e) => {
         e.preventDefault();
 
+        localStorage.setItem("currentCustomerName", customerName.trim());
+
         addBooking({
             barberId: barber.id,
             barberName: barber.name,
