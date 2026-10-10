@@ -7,6 +7,7 @@ function BookingModal({ barber, onClose }) {
     const { t } = useLanguage();
     const [selectedServices, setSelectedServices] = useState([]);
     const [selectedTime, setSelectedTime] = useState(null);
+    const [customerName, setCustomerName] = useState("");
     const { bookings, addBooking } = useApp();
 
     const timeSlots = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00"];
@@ -24,8 +25,7 @@ function BookingModal({ barber, onClose }) {
         .reduce((sum, s) => sum + parseInt(s.price.replace('$', '')), 0);
 
     const handleConfirm = (e) => {
-        e.preventDefault()
-        if (selectedServices.length === 0 || !selectedTime) return;
+        e.preventDefault();
 
         addBooking({
             barberId: barber.id,
@@ -33,7 +33,7 @@ function BookingModal({ barber, onClose }) {
             service: selectedServices,
             time: selectedTime,
             totalPrice: totalPrice,
-            customerName: "Asrorjon",
+            customerName: customerName,
         })
         onClose();
     };
@@ -58,11 +58,25 @@ function BookingModal({ barber, onClose }) {
                     </button>
                 </div>
 
+                <div className="bg-slate-700/30 p-3 rounded-xl border border-slate-600">
+                    <label className="text-xs font-semibold text-indigo-400 block mb-1">
+                        {t('yourName') || "Ismingizni kiriting"} *
+                    </label>
+                    <input type="text"
+                        value={customerName}
+                        onChange={(e) => setCustomerName(e.target.value)}
+                        placeholder='Enter your name.'
+                        className='bg-slate-700 border-slate-600 text-white rounded-xl p-2.5  w-full outline-none'
+                    />
+                </div>
+
                 <div>
                     <h3 className='text-sm font-semibold text-slate-300 mb-2'>
                         {t('selectServices')}
                     </h3>
+
                     <div className='flex flex-col gap-2'>
+
                         {servicesList.map((service) => {
                             const isSelected = selectedServices.includes(service.id);
                             return (
@@ -118,8 +132,8 @@ function BookingModal({ barber, onClose }) {
                     </div>
                     <button
                         onClick={handleConfirm}
-                        disabled={selectedServices.length === 0 || !selectedTime}
-                        className={`px-5 py-2.5 rounded-xl font-medium transition ${selectedServices.length > 0 && selectedTime
+                        disabled={selectedServices.length === 0 || !selectedTime || !customerName.trim()}
+                        className={`px-5 py-2.5 rounded-xl font-medium transition ${selectedServices.length > 0 && selectedTime && customerName.trim()
                             ? 'bg-indigo-600 text-white hover:bg-indigo-500 cursor-pointer'
                             : 'bg-slate-700 text-slate-500 cursor-not-allowed'
                             }`}
