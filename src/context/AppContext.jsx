@@ -32,6 +32,9 @@ export const AppProvider = ({ children }) => {
     const addBarber = (newBarber) => {
         setBarbers((prev) => [...prev, { ...newBarber, id: `b_${Date.now()}` }]);
     };
+    const deleteBarber = (id) => {
+        setBarbers((prev) => prev.filter((barber) => barber.id !== id))
+    }
 
     const addBooking = (bookingData) => {
         setBookings((prev) => [...prev, { ...bookingData, id: `book_${Date.now()}` }]);
@@ -46,6 +49,7 @@ export const AppProvider = ({ children }) => {
             value={{
                 barbers,
                 addBarber,
+                deleteBarber,
                 bookings,
                 addBooking,
                 cancelBooking,

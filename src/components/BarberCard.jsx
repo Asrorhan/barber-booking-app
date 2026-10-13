@@ -1,8 +1,10 @@
 import React from 'react'
 import { useLanguage } from '../context/LanguageContext'
+import { useApp } from '../context/AppContext';
 
 function BarberCard({ barber, onSelect }) {
     const { t } = useLanguage();
+    const { deleteBarber, role } = useApp();
 
     return (
         <div className='bg-slate-800 p-5 rounded-2xl 
@@ -33,6 +35,12 @@ function BarberCard({ barber, onSelect }) {
                 <button className='flex-1 bg-indigo-600 text-white 
                 py-2 rounded-xl font-medium
                  hover:bg-indigo-500 transition' onClick={onSelect}>{t('bookNow')}</button>
+
+                {role === "admin" &&
+                    <button onClick={() => deleteBarber(barber.id)}
+                        className="bg-red-500/10 border border-red-500/30 text-red-400 px-3 py-2 
+                    rounded-xl hover:bg-red-500 hover:text-white transition text-sm font-medium"
+                    > {t('delete') || 'Delete'}</button>}
             </footer>
         </div >
     )
