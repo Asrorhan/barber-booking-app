@@ -34,7 +34,12 @@ export const AppProvider = ({ children }) => {
     };
     const deleteBarber = (id) => {
         setBarbers((prev) => prev.filter((barber) => barber.id !== id))
-    }
+    };
+    const updateBarber = (updateBarber) => {
+        setBarbers((prev) =>
+            prev.map((barber) => barber.id === updateBarber.id ? updateBarber : barber)
+        );
+    };
 
     const addBooking = (bookingData) => {
         setBookings((prev) => [...prev, { ...bookingData, id: `book_${Date.now()}` }]);
@@ -50,6 +55,7 @@ export const AppProvider = ({ children }) => {
                 barbers,
                 addBarber,
                 deleteBarber,
+                updateBarber,
                 bookings,
                 addBooking,
                 cancelBooking,

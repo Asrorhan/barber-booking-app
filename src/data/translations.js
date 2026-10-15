@@ -41,6 +41,9 @@ export const translations = {
     languagesPlaceholder: "Languages (comma separated: UZB, ENG)",
     cancel: "Cancel",
     save: "Save",
+    edit: "Edit",
+    editBarberTitle: "Edit Barber Details",
+    saveChanges: "Save Changes",
   },
   RU: {
     title: "Запись в Барбершоп",
@@ -85,6 +88,9 @@ export const translations = {
     cancel: "Отмена",
     save: "Сохранить",
     delete: "Удалить",
+    edit: "Редактировать",
+    editBarberTitle: "Редактировать данные барбера",
+    saveChanges: "Сохранить изменения",
   },
   UZ: {
     title: "Barbershop Bron Tizimi",
@@ -128,5 +134,9 @@ export const translations = {
     languagesPlaceholder: "Tillar (vergul bilan: UZB, ENG)",
     cancel: "Bekor qilish",
     save: "Saqlash",
+    delete: "O'chirish",
+    edit: "Tahrirlash",
+    editBarberTitle: "Sartarosh ma'lumotlarini tahrirlash",
+    saveChanges: "O'zgarishlarni saqlash",
   },
 };
