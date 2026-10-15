@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import { useApp } from './context/AppContext'
 import BarberList from './pages/BarberList'
 import MyBookings from './pages/MyBookings'
+import Analytics from './components/Analytics'
 function App() {
 
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path='/' element={<BarberList />} />
           <Route path='/my-bookings' element={<MyBookings />} />
           <Route path='/admin' element={<div>Admin Dashboard</div>} />
+          <Route path='/analytics' element={<Analytics />} />
         </Routes>
       </main>
     </div>

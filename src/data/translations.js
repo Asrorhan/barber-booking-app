@@ -44,6 +44,7 @@ export const translations = {
     edit: "Edit",
     editBarberTitle: "Edit Barber Details",
     saveChanges: "Save Changes",
+    analytics: "Analytics",
   },
   RU: {
     title: "Запись в Барбершоп",
@@ -91,6 +92,7 @@ export const translations = {
     edit: "Редактировать",
     editBarberTitle: "Редактировать данные барбера",
     saveChanges: "Сохранить изменения",
+    analytics: "Аналитика",
   },
   UZ: {
     title: "Barbershop Bron Tizimi",
@@ -138,5 +140,6 @@ export const translations = {
     edit: "Tahrirlash",
     editBarberTitle: "Sartarosh ma'lumotlarini tahrirlash",
     saveChanges: "O'zgarishlarni saqlash",
+    analytics: "Analitika",
   },
 };

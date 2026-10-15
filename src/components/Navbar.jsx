@@ -13,6 +13,12 @@ function Navbar() {
             <div className="flex gap-6 items-center">
                 <Link to="/" >{t('barbers')} </Link>
                 <Link to="/my-bookings" >{t('myBookings')} </Link>
+
+                {role === "admin" && (
+                    <Link to="/analytics"
+                        className="text-slate-300 hover:text-white transition font-medium" >
+                        {t('analytics') || 'Analytics'}</Link>
+                )}
             </div>
 
             <div className="flex gap-4">
@@ -52,8 +58,8 @@ function Navbar() {
                 <button
                     onClick={() => setRole(role === "customer" ? "admin" : "customer")}
                     className={`px-4 py-2 rounded-lg font-medium transition cursor-pointer ${role === "admin"
-                            ? "bg-purple-600 hover:bg-purple-700 text-white"
-                            : "bg-indigo-600 hover:bg-indigo-700 text-white"
+                        ? "bg-purple-600 hover:bg-purple-700 text-white"
+                        : "bg-indigo-600 hover:bg-indigo-700 text-white"
                         }`}
                 >
                     {role === "admin" ? "Admin Mode" : "Customer Mode"}
