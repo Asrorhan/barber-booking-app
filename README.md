@@ -1,16 +1,51 @@
-# React + Vite
+# ✂️ Barbershop Booking Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive web application built for barbershops. It allows clients to select services, choose a preferred barber, pick a date and available time slot, and manage their bookings. It also includes multi-language support (English, Uzbek, Russian) and an analytics dashboard.
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** [barbers-booking-app.netlify.app](https://barbers-booking-app.netlify.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Barber Selection:** Browse barbers and view their profiles.
+- **Interactive Booking Modal:** Select services, pick a date, choose an available time slot, and automatically calculate total costs.
+- **My Bookings:** View upcoming appointments with selected date and time.
+- **Analytics Dashboard:** Monitor total revenue, total bookings, top barbers, and filter statistics by date ("All", "Today", or a custom date).
+- **Multi-language Support (i18n):** Full dynamic translation for English, Uzbek, and Russian.
+- **Persistence:** All bookings are saved in `localStorage`.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+- **Frontend:** React.js (Vite)
+- **Styling:** Tailwind CSS
+- **State Management:** React Context API (`AppContext`, `LanguageContext`)
+- **Deployment:** Netlify
+
+---
+
+## 💻 Local Setup Instructions
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/Asrorhan/barber-booking-app.git](https://github.com/Asrorhan/barber-booking-app.git)
+   cd barber-booking-app
+   ```
+2. Install dependencies:
+   npm install
+
+3. Start the development server:
+   npm run dev
+
+📁 Project Structure
+src/
+├── components/ # UI components (BookingModal, Navbar, etc.)
+├── context/ # AppContext & LanguageContext for global state
+├── data/ # Initial mock data (initialData.js)
+├── pages/ # Main application views (Home, BarberList, Analytics, MyBookings)
+├── App.jsx # Main route and layout configuration
+└── main.jsx # Application entry point
+
+Designed & Developed by Asrorjon Kudratov
