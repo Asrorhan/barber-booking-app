@@ -8,6 +8,8 @@ function BookingModal({ barber, onClose }) {
     const [selectedServices, setSelectedServices] = useState([]);
     const [selectedTime, setSelectedTime] = useState(null);
     const [customerName, setCustomerName] = useState("");
+    const today = new Date().toISOString().split('T')[0];
+    const [selectDate, setSelectDate] = useState(today);
     const { bookings, addBooking } = useApp();
 
     const timeSlots = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00"];
@@ -33,6 +35,7 @@ function BookingModal({ barber, onClose }) {
             barberId: barber.id,
             barberName: barber.name,
             service: selectedServices,
+            date: selectDate,
             time: selectedTime,
             totalPrice: totalPrice,
             customerName: customerName,
@@ -41,12 +44,12 @@ function BookingModal({ barber, onClose }) {
     };
 
     const bookedTimes = bookings
-        .filter((b) => b.barberId === barber.id)
+        .filter((b) => b.barberId === barber.id && b.date === selectDate)
         .map((b) => b.time);
 
     return (
         <div className='fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50 backdrop-blur-sm'>
-            <div className='bg-slate-800 w-full max-w-md rounded-2xl p-6 border border-slate-700 shadow-xl flex flex-col gap-5'>
+            <div className='bg-slate-800 w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl p-6 border border-slate-700 shadow-xl flex flex-col gap-5'>
 
                 <div className='flex justify-between items-center border-b border-slate-700 pb-3'>
                     <h2 className='text-lg font-bold text-white'>
@@ -62,14 +65,24 @@ function BookingModal({ barber, onClose }) {
 
                 <div className="bg-slate-700/30 p-3 rounded-xl border border-slate-600">
                     <label className="text-xs font-semibold text-indigo-400 block mb-1">
-                        {t('yourName') || "Ismingizni kiriting"} *
+                        {t('yourName') || "Enter your name"}
                     </label>
                     <input type="text"
                         value={customerName}
                         onChange={(e) => setCustomerName(e.target.value)}
-                        placeholder='Enter your name.'
+                        placeholder={t('enterYourNamePlaceholder')}
                         className='bg-slate-700 border-slate-600 text-white rounded-xl p-2.5  w-full outline-none'
                     />
+                </div>
+                <div className='bg-slate-700/30 p-3 rounded-xl border border-slate-600 mb-3'>
+                    <label className='text-xs font-semibold text-indigo-400 block mb-1'>
+                        {t('selectDate') || "Select Date"}
+                    </label>
+                    <input type="date"
+                        min={today}
+                        value={selectDate}
+                        onChange={(e) => setSelectDate(e.target.value)}
+                        className='bg-slate-700/30 border-slate-600 text-white rounded-xl p-2.5 w-full outline-none ' />
                 </div>
 
                 <div>
