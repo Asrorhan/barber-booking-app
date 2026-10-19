@@ -8,7 +8,7 @@ import Analytics from './components/Analytics'
 function App() {
 
   return (
-    <div>
+    <div className="min-h-screen w-full overflow-x-hidden  text-white">
       <Navbar />
       <main>
         <Routes>
